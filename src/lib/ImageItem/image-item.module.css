@@ -1,0 +1,15 @@
+.image-container {
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
+
+.image-container img {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.selected {
+    border: 2px solid black;
+}

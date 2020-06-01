@@ -1,0 +1,13 @@
+.image-g-container {
+    display: flex;
+}
+
+.image-p-container {
+    width: 400px;
+    height: auto;
+}
+
+.image-p-container img {
+    width: 400px;
+    height: auto;
+}
