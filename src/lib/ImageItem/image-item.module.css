@@ -2,14 +2,25 @@
     width: 100px;
     height: 100px;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .image-container img {
     object-fit: cover;
     width: 100px;
+    border-radius: 5px;
     height: 100px;
 }
 
+.image-c-no-image {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.image-c-no-image-text {
+    font-size: 10px;
+}
+
 .selected {
-    border: 2px solid black;
+    border: 1px solid #c3c3c3;
 }

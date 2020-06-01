@@ -6,24 +6,41 @@ import styles from './image-gallery.module.css';
 const images = [
     'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg',
     'https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg',
-    'https://images.theconversation.com/files/319375/original/file-20200309-118956-1cqvm6j.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop',
-    'https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg',
-    'https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg',
-    'https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg',
-    'https://www.guidedogs.org/wp-content/uploads/2019/11/website-donate-mobile.jpg',
+    'https://images.theconversation.com/files/319375/original/file-20200309-118956-1cqvm6j.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop'
 ];
 
 // const hashMapper = () => images.map((image,i) => `${image}${i}`);
 
-function ImageGallery(props) {
+function ImageGallery() {
     const [currentImg, setCurrentImg] = useState(0);
     const onSelectImg = (position) => setCurrentImg(position);
+
+    const IMAGES_SIZE = images.length;
+    const UP = -1;
+    const DOWN = 1;
+    const IMAGES_SIZE_ARRAY = IMAGES_SIZE - 1;
+
+    const checkLimits = (nextPosition) => {
+        if (nextPosition < 0) {
+            return 0;
+        }
+        if (nextPosition > IMAGES_SIZE_ARRAY) {
+            return IMAGES_SIZE_ARRAY;
+        }
+        return nextPosition;
+    };
+    const upDownController = (direction) =>
+        setCurrentImg(checkLimits(currentImg + direction));
 
     return (
         <div className={styles['image-g-container']}>
             <ImageList
-                upButton={<button>Arriba</button>}
-                downButton={<button>Abajo</button>}
+                upButton={
+                    <button className={styles['btn-default']} onClick={() => upDownController(UP)}>Up</button>
+                }
+                downButton={
+                    <button className={styles['btn-default']} onClick={() => upDownController(DOWN)}>Down</button>
+                }
                 onSelectImg={onSelectImg}
                 showLimit={3}
                 currentImg={currentImg}
