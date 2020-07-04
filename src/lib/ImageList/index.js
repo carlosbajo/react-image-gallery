@@ -29,7 +29,6 @@ function ImageList({
         return imageComponents;
     };
 
-    renderImages();
 
     return (
         <div className={styles['img-g-list']}>

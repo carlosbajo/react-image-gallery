@@ -10,27 +10,36 @@ const images = [
 ];
 
 // const hashMapper = () => images.map((image,i) => `${image}${i}`);
+function updateWithLimits(nextPosition ,endLimit, startLimit = 0) {
+    const isLessThanStart = nextPosition < startLimit;
+    const isMoreThanEnd = nextPosition > endLimit;
+
+    if (isLessThanStart) {
+        return startLimit;
+    } else if (isMoreThanEnd) {
+        return endLimit;
+    } else {
+        return nextPosition;
+    }
+}
 
 function ImageGallery() {
-    const [currentImg, setCurrentImg] = useState(0);
-    const onSelectImg = (position) => setCurrentImg(position);
-
     const IMAGES_SIZE = images.length;
     const UP = -1;
     const DOWN = 1;
     const IMAGES_SIZE_ARRAY = IMAGES_SIZE - 1;
 
-    const checkLimits = (nextPosition) => {
-        if (nextPosition < 0) {
-            return 0;
-        }
-        if (nextPosition > IMAGES_SIZE_ARRAY) {
-            return IMAGES_SIZE_ARRAY;
-        }
-        return nextPosition;
-    };
-    const upDownController = (direction) =>
-        setCurrentImg(checkLimits(currentImg + direction));
+    const [currentImg, setCurrentImg] = useState(0);
+    
+    const onSelectImg = (position) => {
+        return setCurrentImg(position);
+    }
+
+    const upDownController = (direction) => {
+        return setCurrentImg(
+            updateWithLimits(currentImg + direction, IMAGES_SIZE_ARRAY)
+        );
+    }
 
     return (
         <div className={styles['image-g-container']}>
@@ -56,3 +65,4 @@ function ImageGallery() {
 ImageGallery.propTypes = {};
 
 export default ImageGallery;
+export {updateWithLimits};
