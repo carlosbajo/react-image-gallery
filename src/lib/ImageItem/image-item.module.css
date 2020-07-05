@@ -2,8 +2,12 @@
     width: 100px;
     height: 100px;
     padding: 5px;
+    margin: 5px;
     border-radius: 5px;
+    text-align: center;
 }
+.image-container p { margin: 0; }
+.image-container:hover { cursor: pointer; }
 
 .image-container img {
     object-fit: cover;
@@ -23,5 +27,6 @@
 }
 
 .selected {
-    border: 1px solid #c3c3c3;
+    /* border: 1px solid #DAE3E7; */
+    background-color: #DAE3E7;
 }
