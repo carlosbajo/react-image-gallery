@@ -6,9 +6,8 @@ import Empty from './empty';
 
 function ImageItem({ image, onSelectImg, position, selected }) {
     const isSelectedStyle = () => (selected ? styles.selected : null);
-    const imgItemContainerClasses = `${
-        styles['image-container']
-    } ${isSelectedStyle()}`;
+    const imgItemContainerClasses = `${styles['image-container']} ${isSelectedStyle()}`;
+
     const onImageClick = () => onSelectImg(position);
 
     if (!image) {
@@ -22,8 +21,8 @@ function ImageItem({ image, onSelectImg, position, selected }) {
     }
 
     return (
-        <div className={imgItemContainerClasses}>
-            <img onClick={onImageClick} src={image} />
+        <div className={imgItemContainerClasses} onClick={onImageClick}>
+            <img src={image} />
         </div>
     );
 }

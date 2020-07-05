@@ -9,7 +9,6 @@ const images = [
     'https://images.theconversation.com/files/319375/original/file-20200309-118956-1cqvm6j.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop'
 ];
 
-// const hashMapper = () => images.map((image,i) => `${image}${i}`);
 function updateWithLimits(nextPosition ,endLimit, startLimit = 0) {
     const isLessThanStart = nextPosition < startLimit;
     const isMoreThanEnd = nextPosition > endLimit;
